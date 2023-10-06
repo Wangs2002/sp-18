@@ -50,7 +50,7 @@ public class NBody{
 			}
 			drawBackground(R);
 			for(int i = 0; i < universe.length; i++){
-				universe[i].Draw();
+				universe[i].draw();
 			}
 			StdDraw.show();
 			StdDraw.pause(10);
