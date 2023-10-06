@@ -1,5 +1,5 @@
 public class NBody{
-	public static String imageToDraw = "./images/starfield.jpg";
+	private static String imageToDraw = "./images/starfield.jpg";
 	public static double readRadius(String file){
 		In in = new In(file);
 		in.readInt();
@@ -24,13 +24,6 @@ public class NBody{
 		}
 		return allPlanets;
 	}
-	public static void drawBackground(double R){
-		StdDraw.setScale(-R, R);
-		StdDraw.clear();
-		StdDraw.picture(-100, 100, imageToDraw);
-		StdDraw.show();
-		StdDraw.pause(2000);
-	}
 	public static void main(String[] args){
 		double T = Double.parseDouble(args[0]);
 		double dt = Double.parseDouble(args[1]);
@@ -48,7 +41,9 @@ public class NBody{
 				yForces[i] = universe[i].calcNetForceExertedByY(universe);
 				universe[i].update(dt, xForces[i], yForces[i]);
 			}
-			drawBackground(R);
+			StdDraw.setScale(-R, R);
+			StdDraw.clear();
+			StdDraw.picture(-100, 100, imageToDraw);
 			for(int i = 0; i < universe.length; i++){
 				universe[i].draw();
 			}
